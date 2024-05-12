@@ -287,3 +287,42 @@ To delete your kind cluster run the following command:
 ```bash
 kind delete cluster --name cilium-grafana-observability-demo
 ```
+
+
+
+## Update Cmd
+
+```bash
+# throughput
+helm upgrade jobs-app ./helm/jobs-app.tgz \
+    --namespace tenant-jobs \
+    --reuse-values \
+    --set crawler.replicas=3 \
+    --set crawler.crawlFrequencyLowerBound=0.2 \
+    --set crawler.crawlFrequencyUpperBound=0.5 \
+    --set resumes.replicas=2
+
+
+# error rate
+helm upgrade jobs-app ./helm/jobs-app.tgz \
+  --namespace tenant-jobs \
+  --reuse-values \
+  --set coreapi.errorRate=0.5 \
+  --set coreapi.sleepRate=0.01
+
+# Latency
+helm upgrade jobs-app ./helm/jobs-app.tgz \
+  --namespace tenant-jobs \
+  --reuse-values \
+  --set coreapi.sleepRate=0.2 \
+  --set coreapi.sleepLowerBound=0.5 \
+  --set coreapi.sleepUpperBound=5.0
+
+# trace
+helm upgrade jobs-app ./helm/jobs-app.tgz \
+  --namespace tenant-jobs \
+  --reuse-values \
+  --set tracing.enabled=true
+
+```
+
