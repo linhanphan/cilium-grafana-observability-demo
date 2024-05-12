@@ -39,7 +39,7 @@ spec:
             - name: PORT
               value: "9080"
             - name: ES_ENDPOINT
-              value: "http://elastic:changeme@elasticsearch-master.tenant-jobs.svc.cluster.local:9200/"
+              value: "http://elastic:changeme@elasticsearch-master.{{ .Release.Namespace }}.svc.cluster.local:9200/"
             - name: PERIODIC_REQUESTS
               value: "10"
             - name: DEBUG
