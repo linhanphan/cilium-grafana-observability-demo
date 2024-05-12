@@ -5,7 +5,7 @@ metadata:
 spec:
   mode: daemonset
   hostNetwork: true
-  image: otel/opentelemetry-collector-contrib:0.60.0
+  image: otel/opentelemetry-collector-contrib:0.85.0
   config: |
     receivers:
       jaeger:
