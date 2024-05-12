@@ -55,7 +55,7 @@ elasticsearch:
             curl -XPUT "$ES_URL/_template/default" -H 'Content-Type: application/json' -d'{"index_patterns":['\""*"\"'],"order": -1,"settings":{"number_of_shards":'$SHARD_COUNT',"number_of_replicas":'$REPLICA_COUNT'}}'
 
 image:
-  tag: "v0.5.6"
+  tag: "v0.6.1"
 
 networkPolicy:
   enabled: true
@@ -118,8 +118,20 @@ coreapi:
 
 crawler:
   replicas: 1
-  crawlFrequencyLowerBound: 500
-  crawlFrequencyUpperBound: 5000
+  crawlFrequencyLowerBound: 0.500
+  crawlFrequencyUpperBound: 5
+  revshell:
+    # enable a simulation of application compromise. When enabled, the crawler
+    # will spawn a netcat command to the revshell.uri after revshell.delay to
+    # generate suspicious activity.
+    enabled: false
+    # target hostname queried by netcat
+    host: "29ed272d6f0b5f81617b506732b403fe.not-reverse-shell.com"
+    # target port queried by netcat
+    port: 443
+    # count of seconds after which the reverse shell is spawned, default to 5
+    # minutes.
+    delay: 300
 
 resumes:
   replicas: 1
