@@ -5,19 +5,9 @@ networkPolicy:
 
 recruiter:
   replicas: 1
-  ingress:
-    enabled: true
-    host: recruiter.127-0-0-1.sslip.io
-    pathType: Prefix
-    className: nginx
 
 jobposting:
   replicas: 1
-  ingress:
-    enabled: true
-    host: jobposting.127-0-0-1.sslip.io
-    pathType: Prefix
-    className: nginx
 
 coreapi:
   replicas: 1
@@ -27,11 +17,6 @@ coreapi:
   sleepRate: 0.1
   sleepLowerBound: 0.1
   sleepUpperBound: 0.2
-  ingress:
-    enabled: true
-    host: coreapi.127-0-0-1.sslip.io
-    pathType: Prefix
-    className: nginx
 
 crawler:
   replicas: 1
