@@ -11,20 +11,6 @@ prometheus:
     enableRemoteWriteReceiver: true
     enableFeatures:
       - exemplar-storage
-    externalLabels:
-      cluster: kind
-  ingress:
-    enabled: true
-    ingressClassName: nginx
-    hosts:
-      - prometheus.127-0-0-1.sslip.io
-
-alertmanager:
-  ingress:
-    enabled: true
-    ingressClassName: nginx
-    hosts:
-      - alertmanager.127-0-0-1.sslip.io
 
 grafana:
   enabled: true
@@ -34,16 +20,8 @@ grafana:
   serviceMonitor:
     enabled: true
   grafana.ini:
-    server:
-      domain: grafana.127-0-0-1.sslip.io
-      root_url: "%(protocol)s://%(domain)s"
     feature_toggles:
       enable: 'tempoApmTable tempoBackendSearch'
-  ingress:
-    enabled: true
-    ingressClassName: nginx
-    hosts:
-      - grafana.127-0-0-1.sslip.io
 
   persistence:
     enabled: true
