@@ -35,7 +35,7 @@ spec:
             - containerPort: 50051
           env:
             - name: KAFKA_HOST
-              value: jobs-app-kafka-brokers.tenant-jobs.svc.cluster.local:9092
+              value: jobs-app-kafka-brokers.{{ .Release.Namespace }}.svc.cluster.local:9092
             - name: DEBUG
               value: "{{ .Values.debug}}"
             - name: ENABLE_TRACING
