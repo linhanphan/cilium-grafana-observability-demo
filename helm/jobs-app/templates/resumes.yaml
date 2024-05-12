@@ -21,7 +21,7 @@ spec:
             - name: API_ENDPOINT
               value: "http://coreapi:9080/"
             - name: KAFKA_HOST
-              value: jobs-app-kafka-brokers.tenant-jobs.svc.cluster.local:9092
+              value: jobs-app-kafka-brokers.{{ .Release.Namespace }}.svc.cluster.local:9092
             - name: DEBUG
               value: "{{ .Values.debug}}"
             - name: ENABLE_TRACING
